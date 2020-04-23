@@ -8,8 +8,8 @@ if __name__ == "__main__":
     inports = []
     input_names = mido.get_input_names()
     for name in input_names:
-    	print(name)
-    	inports.append(mido.open_input(name))
-    multi = MultiPort(inports)
-    for msg in multi:
+        if "MINI" in name:
+            inport = mido.open_input(name)
+            break
+    for msg in inport:
         print(msg)
