@@ -1,9 +1,10 @@
 import sys
-import midi
-from midi import MidiConnector
+import mido
+from mido import *
+
+
 if __name__ == "__main__":
+    inport = mido.open_input()
 
-    conn = MidiConnector('/dev/serial0')
-
-    while True:
-        print(conn.read())
+    for msg in inport:
+        print(msg)
