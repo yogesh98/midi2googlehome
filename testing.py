@@ -1,10 +1,15 @@
 import sys
 import mido
 from mido import *
-
+from mido.ports import MultiPort
 
 if __name__ == "__main__":
-    inport = mido.open_input()
-
-    for msg in inport:
+    print("Trying")
+    inports = []
+    input_names = mido.get_input_names()
+    for name in input_names:
+    	print(name)
+    	inports.append(mido.open_input(name))
+    multi = MultiPort(inports)
+    for msg in multi:
         print(msg)
